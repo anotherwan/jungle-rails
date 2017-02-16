@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h3>Thank you for your order, <%= @order.email %>! </h3>
+    <h5>Order #<%= @order.id %></h5>
+    <h5>Details:</h5>
+
+    <h6>Order placed on <%= @order.created_at %></h6>
+
+    <h5><%= render 'orders/item' %></h5>
+
+    <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+
+  </body>
+</html>
