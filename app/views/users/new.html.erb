@@ -1,0 +1,17 @@
+<h1>Please Register to Enter the Jungle</h1>
+
+<%= form_for :user, url: '/users' do |f| %>
+  <br><br>
+  First Name: <%= f.text_field :first_name %>
+  <br><br>
+  Last Name: <%= f.text_field :last_name %>
+  <br><br>
+  Email: <%= f.text_field :email %>
+  <br><br>
+  Password: <%= f.password_field :password %>
+  <br><br>
+  Password Confirmation: <%= f.password_field :password_confirmation %>
+  <br><br>
+  <%= f.submit "Submit" %>
+
+<% end %>
