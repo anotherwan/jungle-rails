@@ -38,10 +38,25 @@
             <li><%= link_to 'Products',  [:admin, :products] %></li>
             <li><%= link_to 'Categories', [:admin, :categories] %></li>
           </ul>
-        </li>
+       </li>
         <li>
           <%= link_to cart_path do %>
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
+          <% end %>
+        </li>
+        <li>
+          <% if current_user %>
+          <p class="navbar-text">
+            Welcome, <strong><%= current_user.first_name %></strong>
+          </p>
+          <button type="button" class="btn btn-default navbar-btn">
+            <%= link_to "Logout", '/logout' %>
+          </button>
+          <% else %>
+          <button type="button" class="btn btn-default navbar-btn">
+            <%= link_to 'Login', '/login' %>
+          </button>
+          <button type="button" class="btn btn-default navbar-btn"> <%= link_to "Register", '/registration' %> </button>
           <% end %>
         </li>
       </ul>
