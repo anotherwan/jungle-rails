@@ -1,13 +1,20 @@
+
 <section class="orders-show">
 
-  <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
-  </header>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3>Thank you for your order, <%= @order.email %>! </h3>
+    </div>
 
-  <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
-  </div>
+    <div class="panel-body">
+      <h4>Order Details</h4>
+      <h5>Order #<%= @order.id %></h5>
+      <h6>Order placed on <%= @order.created_at %>
+    </div>
 
-  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+    <%= render 'item' %>
 
+    </div>
+    <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+  <br><br>
 </section>
