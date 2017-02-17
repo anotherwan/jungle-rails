@@ -1,3 +1,5 @@
+<% if cart.count > 0 %>
+
 <section class="cart-show">
 
   <header class="page-header">
@@ -51,3 +53,12 @@
   </div>
 
 </section>
+
+
+<% else %>
+
+<h3>Oh no! Your cart is currently empty! </h3>
+<br>
+<h4>Return to the <strong> <%= link_to "home", '/' %> </strong> page to add items to your cart</h4>
+
+<% end %>
