@@ -5,27 +5,60 @@
   </header>
 
   <article class="product-detail">
-
     <div class="row">
-
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
-
       <div class="col-sm-8">
         <dl class="dl-horizontal">
-          <dt>Name</dt>
+          <dt>Name:</dt>
           <dd><%= @product.name %></dd>
-          <dt>Description</dt>
+          <dt>Description:</dt>
           <dd><%= @product.description %></dd>
-          <dt>Quantity</dt>
+          <dt>Quantity:</dt>
           <dd><%= @product.quantity %></dd>
-          <dt>Price</dt>
+          <dt>Price:</dt>
           <dd><%= @product.price %></dd>
+          <dt>Average Rating:</dt>
+          <dd><%= @product.average_rating.to_i %>
+          <br>
+         (<strong>Total Ratings:</strong> <%= @product.reviews.count %>)</dd>
         </dl>
       </div>
     </div>
-
+    <% if current_user %>
+        <%= render '/reviews/new' %>
+      <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h6 class="panel-title">
+                Previous Reviews for <strong><%= @product.name %></strong>:
+              </h6>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <% @product.reviews.each do |r| %>
+                  <li class="list-group-item">
+                    <h4><strong><%= r.user.first_name %>:</strong></h4>
+                      <small><strong>Rated this product: </strong><%= r.rating %> </small>
+                          <br>
+                          <p>
+                            <%= r.description %>
+                          </p>
+                            <% if r.user == current_user %>
+                              <%= button_to 'Delete', product_review_path(product_id: @product, id: r.id), method: :delete, class: 'btn btn-danger' %>
+                            <% end %>
+                          <br>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </article>
-
 </section>
