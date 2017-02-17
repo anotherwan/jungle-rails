@@ -5,8 +5,7 @@ class Product < ActiveRecord::Base
 
   belongs_to :category
   has_many :reviews, dependent: :destroy
-  # , -> { order(created_at: :desc) }, 
-
+  
   validates :name, presence: true
   validates :price, presence: true
   validates :quantity, presence: true
