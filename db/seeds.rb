@@ -132,5 +132,37 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+User.destroy_all
+
+user1 = User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 'password'
+  })
+
+user2 = User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password_digest: 'password'
+  })
+
+Review.destroy_all
+
+Review.create!({
+  user: user1,
+  product_id: Product.first.id,
+  description: Faker::Hipster.paragraph(2),
+  rating: 3
+  })
+
+Review.create!({
+  user: user2,
+  product_id: Product.last.id,
+  description: Faker::Hipster.paragraph(2),
+  rating: 5
+  })
+
 
 puts "DONE!"
